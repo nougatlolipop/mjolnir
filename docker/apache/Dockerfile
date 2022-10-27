@@ -55,6 +55,10 @@ RUN chmod 777 ./ -R
 # create codeigniter 4
 RUN composer create-project codeigniter4/appstarter ./
 
+RUN chmod 777 -R /var/www/html/writable
+
+RUN cp env .env
+
 VOLUME ./app:/var/www/html
 
 EXPOSE 80
