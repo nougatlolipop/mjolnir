@@ -1,8 +1,8 @@
 FROM php:7.4-apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get install -y\
+RUN apt-get update\
+    apt-get -y upgrade\
+    apt-get install -y\
     git \
     zip \
     curl \
@@ -55,10 +55,14 @@ RUN chmod 777 ./ -R
 # create codeigniter 4
 RUN composer create-project codeigniter4/appstarter ./
 
-RUN chmod 777 -R /var/www/html/writable
-
-RUN cp env .env
-
+# volume folder
 VOLUME ./app:/var/www/html
 
+# RUN permission
+RUN chmod 777 -R /var/www/html/writable
+
+# RUN environmenrt
+RUN cp env .env
+
+# EXPOSE port
 EXPOSE 80
