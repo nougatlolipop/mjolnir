@@ -1,8 +1,8 @@
 FROM php:7.4-apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN apt-get update\
-    apt-get -y upgrade\
-    apt-get install -y\
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y\
     git \
     zip \
     curl \
